@@ -1,124 +1,175 @@
+import React, { useState, useEffect } from "react"
+import './Form.css'
 
 
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0px;
-    font-family: 'segoe ui';
-  }
-  
-  .nav {
-    height: 62px;
-    width: 100%;
-    background-color: #273952;
-    color: #FCFFB2;
-    position: relative;
-  }
-  
-  .nav > .nav-header {
-    display: inline;
-  }
-  
-  .website-title {
-    position: absolute;
-    bottom: 1%;
-    left: 12%;
-    float: left;
-    clear: left;
-    margin-bottom: 0.25em;
-    font-family: 'Rubik Dirt', cursive;
-    font-size: 35px;
+function Exchange() {
 
-  }
+    const [result, setResult] = useState(0);
+    const [from, setFrom] = useState('');
+    const [to, setTo] = useState('');
 
-  #logo {
-    position: absolute;
-    left: 1%;
-    width: 45px;
-    height: 45px;
-    float: left;
-    clear: left;
 
-    margin-bottom: 1em;
+    let fromSelectManager = (fromCurrency) => {
+        setFrom(fromCurrency.target.value)
+    }
+    let toSelectManager = (toCurrency) => {
+        setTo(toCurrency.target.value)
+    }
+    // from JOD:
 
-  }
+    function JOD2USD(JOD) {
+        setResult(JOD * 1.4093)
+    }
 
-  .nav > .nav-header > .nav-title {
-    display: inline-block;
-    font-size: 22px;
-    color: #fff;
-    padding: 10px 10px 10px 10px;
-  }
-  
-  .nav > .nav-btn {
-    display: none;
-  }
-  
-  .nav > .nav-links {
-    display: inline;
-    float: right;
-    font-size: 18px;
-  }
-  
-  .nav > .nav-links > a {
-    display: inline-block;
-    padding: 13px 10px 13px 10px;
-    text-decoration: none;
-    color: #efefef;
-  }
-  
-  .nav > .nav-links > a:hover {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  
-  .nav > #nav-check {
-    display: none;
-  }
-  
-  @media (max-width:600px) {
-    .nav > .nav-btn {
-      display: inline-block;
-      position: absolute;
-      right: 0px;
-      top: 0px;
+    function JOD2TL(JOD) {
+        setResult(JOD * 26.124)
     }
-    .nav > .nav-btn > label {
-      display: inline-block;
-      width: 50px;
-      height: 50px;
-      padding: 13px;
+
+    function JOD2SAR(JOD) {
+        setResult(JOD * 5.297)
     }
-    .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-      background-color: rgba(0, 0, 0, 0.3);
+
+    // from USD:
+
+    function USD2JOD(USD) {
+        setResult(USD / 1.409)
     }
-    .nav > .nav-btn > label > span {
-      display: block;
-      width: 25px;
-      height: 10px;
-      border-top: 2px solid #eee;
+
+    function USD2SAR(USD) {
+        setResult(USD * 3.758)
     }
-    .nav > .nav-links {
-      position: absolute;
-      display: block;
-      width: 100%;
-      background-color: #178767b2;
-      height: 0px;
-      transition: all 0.3s ease-in;
-      overflow-y: hidden;
-      top: 50px;
-      left: 0px;
+
+    function USD2TL(USD) {
+        setResult(USD * 18.539)
     }
-    .nav > .nav-links > a {
-      display: block;
-      width: 100%;
+
+    // from SAR:
+
+    function SAR2JOD(SAR) {
+        setResult(SAR * 0.189)
     }
-    .nav > #nav-check:not(:checked) ~ .nav-links {
-      height: 0px;
+
+    function SAR2USD(SAR) {
+        setResult(SAR * 0.266)
     }
-    .nav > #nav-check:checked ~ .nav-links {
-      height: calc(100vh - 50px);
-      overflow-y: auto;
+
+    function SAR2TL(SAR) {
+        setResult(SAR * 4.935)
     }
-  }
+
+    // from TL: 
+
+    function TL2JOD(TL) {
+        setResult(TL * 0.0383)
+    }
+
+    function TL2USD(TL) {
+        setResult(TL * 0.0539)
+    }
+
+    function TL2SAR(TL) {
+        setResult(TL * 0.2026)
+    }
+
+
+    let convert = (e) => {
+        e.preventDefault()
+        let enteredAmount = e.target[1].value;
+        switch (from !== '') {
+            case from === 'jod', to === 'usd':
+                JOD2USD(enteredAmount);
+                break;
+
+            case from === 'jod', to === 'sar':
+                JOD2SAR(enteredAmount);
+                break;
+
+            case from === 'jod', to === 'tl':
+                JOD2TL(enteredAmount);
+                break;
+
+            case from === 'usd', to === 'jod':
+                USD2JOD(enteredAmount);
+                break;
+
+            case from === 'usd', to === 'sar':
+                USD2SAR(enteredAmount);
+                break;
+
+            case from === 'usd', to === 'tl':
+                USD2TL(enteredAmount);
+                break;
+
+            case from === 'sar', to === 'jod':
+                SAR2JOD(enteredAmount);
+                break;
+
+            case from === 'sar', to === 'usd':
+                SAR2USD(enteredAmount);
+                break;
+
+            case from === 'sar', to === 'tl':
+                SAR2TL(enteredAmount);
+                break;
+
+            case from === 'tl', to === 'jod':
+                TL2JOD(enteredAmount);
+                break;
+            case from === 'tl', to === 'usd':
+                TL2USD(enteredAmount);
+                break;
+            case from === 'tl', to === 'sar':
+                TL2SAR(enteredAmount);
+                break;
+
+        }
+
+    }
+
+    return (
+        <div className="main-wrapper">
+            <form onSubmit={convert}>
+                <div> 
+                <div id="base_wrapper"> 
+
+           
+                <select id="fromCurrency" onChange={fromSelectManager}>
+                    <option value='none'>Select Currency</option>
+                    <option value='jod'>Jordanian Dinar</option>
+                    <option value='tl'>Turkish Lira</option>
+                    <option value='sar'>Saudi Riyal</option>
+                    <option value='usd'>US Dollar </option>
+                </select>
+                <input type='number' id="amout" className="main-input" min="0" />
+                </div>
+             
+                <div id="base_wrapper"> 
+
+                <select id="toCurrency" onChange={toSelectManager}>
+                    <option value='none'>Select Currency</option>
+                    <option value='jod'>Jordanian Dinar</option>
+                    <option value='tl'>Turkish Lira</option>
+                    <option value='sar'>Saudi Riyal</option>
+                    <option value='usd'>US Dollar </option>
+                </select>
+                <input type='number' id="amout" className="main-input" value={result} />
+                </div>
+
+                <button className="convert-button"> 
+                <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+                Convert </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    )
+
+
+}
+
+export default Exchange
