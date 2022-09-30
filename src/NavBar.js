@@ -9,7 +9,7 @@ export default function NavBar() {
         <input type="checkbox" id="nav-check"/>
         <div className="nav-header">
           <div className="nav-title">
-          <img src={logo} id='logo'/>
+          <img src={logo} id='logo' alt='logo'/>
             <div className='website-title'> Odat Exchange </div>
           </div>
         </div>
@@ -22,9 +22,9 @@ export default function NavBar() {
         </div>
         
         <div className="nav-links">
-          <a href="#" target="_blank">Home Page</a>
-          <a href="https://www.google.com/finance/" target="_blank">Stocks</a>
-          <a href="#" target="_blank">About Us</a>
+          <a href="https://odatexchange.netlify.app/">Home Page</a>
+          <a href="https://www.google.com/finance/" >Stocks</a>
+          <a href="https://odatexchange.netlify.app/" >About Us</a>
          
         </div>
       </div>
