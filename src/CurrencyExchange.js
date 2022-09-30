@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
 
 
 * {
