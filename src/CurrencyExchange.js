@@ -75,50 +75,50 @@ function Exchange() {
     let convert = (e) => {
         e.preventDefault()
         let enteredAmount = e.target[1].value;
-        switch (from != '') {
-            case from == 'jod', to == 'usd':
+        switch (from !== '') {
+            case from === 'jod', to === 'usd':
                 JOD2USD(enteredAmount);
                 break;
 
-            case from == 'jod', to == 'sar':
+            case from === 'jod', to === 'sar':
                 JOD2SAR(enteredAmount);
                 break;
 
-            case from == 'jod', to == 'tl':
+            case from === 'jod', to === 'tl':
                 JOD2TL(enteredAmount);
                 break;
 
-            case from == 'usd', to == 'jod':
+            case from === 'usd', to === 'jod':
                 USD2JOD(enteredAmount);
                 break;
 
-            case from == 'usd', to == 'sar':
+            case from === 'usd', to === 'sar':
                 USD2SAR(enteredAmount);
                 break;
 
-            case from == 'usd', to == 'tl':
+            case from === 'usd', to === 'tl':
                 USD2TL(enteredAmount);
                 break;
 
-            case from == 'sar', to == 'jod':
+            case from === 'sar', to === 'jod':
                 SAR2JOD(enteredAmount);
                 break;
 
-            case from == 'sar', to == 'usd':
+            case from === 'sar', to === 'usd':
                 SAR2USD(enteredAmount);
                 break;
 
-            case from == 'sar', to == 'tl':
+            case from === 'sar', to === 'tl':
                 SAR2TL(enteredAmount);
                 break;
 
-            case from == 'tl', to == 'jod':
+            case from === 'tl', to === 'jod':
                 TL2JOD(enteredAmount);
                 break;
-            case from == 'tl', to == 'usd':
+            case from === 'tl', to === 'usd':
                 TL2USD(enteredAmount);
                 break;
-            case from == 'tl', to == 'sar':
+            case from === 'tl', to === 'sar':
                 TL2SAR(enteredAmount);
                 break;
 
